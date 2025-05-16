@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./images/favicon-32x32.png" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+			rel="stylesheet" />
+		<link rel="stylesheet" href="CSS/style.css" />
+
+		<title>Interactive card details form</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="left">
+				<div class="cards-sides-container">
+					<div class="front-card">
+						<img src="images/card-logo.svg" alt="" />
+						<h3 id="card-number">0000 0000 0000 0000</h3>
+						<div class="card-details">
+							<span class="card-name">Jane Appleseed</span>
+							<div class="container">
+								<span class="card-month">09/</span>
+								<span class="card-year">00</span>
+							</div>
+						</div>
+					</div>
+					<div class="back-card">
+						<span class="card-cvc">000</span>
+					</div>
+				</div>
+			</div>
+			<div class="right">
+				<div class="form-container">
+					<span class="title">CARDHOLDER NAME</span>
+					<input
+						id="input-card-name"
+						type="text"
+						placeholder="e.g.Jane Appleseed" />
+					<span class="title">CARD NUMBER</span>
+					<input
+						id="input-card-number"
+						type="text"
+						inputmode="numeric"
+						placeholder="e.g.0000 0000 0000 0000"
+						maxlength="19" />
+					<div class="date-input-container">
+						<div class="left-side">
+							<span class="title">EXP. DATE (MM/YY)</span>
+							<div class="inputs">
+								<input
+									id="input-card-month"
+									type="text"
+									placeholder="MM"
+									inputmode="numeric"
+									maxlength="2" />
+								<input
+									id="input-card-year"
+									type="text"
+									placeholder="YY"
+									inputmode="numeric"
+									maxlength="2" />
+							</div>
+						</div>
+						<div class="right-side">
+							<span class="title">CVC</span>
+							<input
+								id="input-card-cvc"
+								type="text"
+								inputmode="numeric"
+								placeholder="e.g. 000"
+								maxlength="3" />
+						</div>
+					</div>
+					<button id="confirm-btn">Confirm</button>
+				</div>
+
+				<div class="ready-message">
+					<img src="images/icon-complete.svg" alt="" />
+					<h2>THANK YOU!</h2>
+					<p>We've added your card details!</p>
+					<button id="continue-btn">Continue</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="main.js"></script>
+	</body>
+</html>
