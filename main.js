@@ -7,6 +7,10 @@ const confirmBtn = document.querySelector('#confirm-btn');
 const readyMessage = document.querySelector('.ready-message');
 const formDiv = document.querySelector('.form-container');
 const continueBtn = document.querySelector('#continue-btn');
+const errorName = document.querySelector('.error-name');
+const errorNumber = document.querySelector('.error-number');
+const errorDate = document.querySelector('.error-date');
+const errorCvc = document.querySelector('.error-cvc');
 
 const cardNamePlace = document.querySelector('.card-name');
 const cardNumberPlace = document.querySelector('#card-number');
@@ -21,35 +25,58 @@ confirmBtn.addEventListener('click', () => {
 	const cardYear = cardYearInput.value.trim();
 	const cardCvc = cardCvcInput.value.trim();
 
+	let hasError = false;
+
 	if (cardName === '') {
 		nameInput.classList.add('error');
+		errorName.style.display = 'block';
+		hasError = true;
 	} else {
 		nameInput.classList.remove('error');
+		errorName.style.display = 'none';
 	}
-	if (!cardNumber) {
+
+	if (cardNumber === '') {
 		cardNumberInput.classList.add('error');
-		alert('Wpisz odpowiedni numer karty!');
+		errorNumber.style.display = 'block';
+		hasError = true;
+	} else if (cardNumber.length < 14) {
+		errorNumber.textContent = 'To short number!';
+		errorNumber.style.display = 'block';
+		cardNumberInput.classList.add('error');
+		hasError = true;
+	} else {
+		cardNumberInput.classList.remove('error');
+		errorNumber.style.display = 'none';
 	}
 
 	if (!cardMonth || cardMonth.length < 2) {
 		cardMonthInput.classList.add('error');
+		errorDate.style.display = 'block';
+		hasError = true;
 	} else {
 		cardMonthInput.classList.remove('error');
 	}
 
 	if (!cardYear || cardYear.length < 2) {
 		cardYearInput.classList.add('error');
+		errorDate.style.display = 'block';
+		hasError = true;
 	} else {
 		cardYearInput.classList.remove('error');
+		errorDate.style.display = 'none';
 	}
 
 	if (cardCvc.length < 3) {
-		alert('CVC must be exactly 3 digits!');
 		cardCvcInput.classList.add('error');
-		return;
+		errorCvc.style.display = 'block';
+		hasError = true;
 	} else {
 		cardCvcInput.classList.remove('error');
+		errorCvc.style.display = 'none';
 	}
+
+	if (hasError) return;
 
 	cardNamePlace.textContent = cardName;
 	cardNumberPlace.textContent = cardNumber;
@@ -76,4 +103,9 @@ cardNumberInput.addEventListener('input', () => {
 continueBtn.addEventListener('click', () => {
 	readyMessage.style.display = 'none';
 	formDiv.style.display = 'flex';
+	cardNamePlace.textContent = 'Jane Appleseed';
+	cardNumberPlace.textContent = '0000 0000 0000 0000';
+	cardMonthPlace.textContent = '09';
+	cardYearPlace.textContent = '00';
+	cardCvcPlace.textContent = '000';
 });

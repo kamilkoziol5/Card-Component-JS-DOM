@@ -117,16 +117,15 @@ body {
 			width: 100%;
 			display: flex;
 			flex-direction: column;
-			// display: none;
 
 			.title {
 				color: $neutral-very-dark-violet;
 				font-size: 24px;
 				margin-bottom: 8px;
+				margin-top: 60px;
 			}
 
 			input {
-				margin-bottom: 25px;
 				padding: 20px 15px;
 				border-radius: 8px;
 				outline: none;
@@ -148,6 +147,12 @@ body {
 				&.error {
 					border-color: $input-error-red;
 				}
+			}
+
+			.red-error {
+				color: $input-error-red;
+				margin-top: 10px;
+				display: none;
 			}
 
 			.date-input-container {
@@ -227,6 +232,7 @@ body {
 		border: none;
 		transition: 200ms ease;
 		font-size: 22px;
+		margin-top: 50px;
 
 		&:hover {
 			background-color: $primary-gradient-start;
